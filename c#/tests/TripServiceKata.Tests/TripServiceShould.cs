@@ -20,6 +20,19 @@ namespace TripServiceKata.Tests {
             trips.Should().HaveCount(1);
         }
 
+        [Fact]
+        public void not_returns_trips_when_logged_user_has_not_friends()
+        {
+            IUser loggedUser = new User();
+            var tripService = new TripService(loggedUser);
+            var otherUserThanLoggedUser = new User();
+            var aGivenUser = AGivenUserWithFriend(otherUserThanLoggedUser);
+
+            var trips = tripService.GetTripsByUser(aGivenUser);
+
+            trips.Should().HaveCount(1);
+        }
+
         private static IUser AGivenUserWithFriend(IUser loggedUser)
         {
             IUser aGivenUser = Substitute.For<IUser>();
