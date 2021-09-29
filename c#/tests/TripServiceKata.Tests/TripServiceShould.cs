@@ -11,7 +11,7 @@ namespace TripServiceKata.Tests {
         [Fact]
         public void get_trips_by_user()
         {
-            IUser aGivenUser = NSubstitute.Substitute.For<IUser>();
+            IUser aGivenUser = Substitute.For<IUser>();
             var aGivenUserTrips = new List<Trip>(){new Trip()};
             aGivenUser.FindTripsByUser().Returns(aGivenUserTrips);
             IUser loggedUser = new User();
