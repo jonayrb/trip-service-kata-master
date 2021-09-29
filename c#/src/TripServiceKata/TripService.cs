@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using TripServiceKata.Entity;
 using TripServiceKata.Exception;
-using TripServiceKata.Service;
 
 namespace TripServiceKata {
     public class TripService {
