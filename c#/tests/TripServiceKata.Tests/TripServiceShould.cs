@@ -11,9 +11,10 @@ namespace TripServiceKata.Tests
         [Fact]
         public void get_trips_by_user()
         {
-            User aGivenUser = new User();
-            var loggedUser = aGivenUser;
+            IUser aGivenUser = new User();
+            IUser loggedUser = new User();
             var tripService = new TripService(loggedUser);
+            aGivenUser.AddFriend(loggedUser);
 
             var trips = tripService.GetTripsByUser(aGivenUser);
 
