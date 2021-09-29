@@ -12,7 +12,7 @@ namespace TripServiceKata {
         }
 
         public List<Trip> GetTripsByUser(IUser user) {
-            List<Trip> tripList = new List<Trip>();
+            var tripList = new List<Trip>();
             ThrowsUserNotLoggedIn();
 
             var isFriend = LoggerUserIsFriend(user);
