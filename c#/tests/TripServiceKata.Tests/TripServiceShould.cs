@@ -1,13 +1,11 @@
-﻿using System.Collections.Generic;
-using Castle.Components.DictionaryAdapter;
+﻿using Castle.Components.DictionaryAdapter;
 using FluentAssertions;
 using NSubstitute;
+using System.Collections.Generic;
 using TripServiceKata.Entity;
-using TripServiceKata.Service;
 using Xunit;
 
-namespace TripServiceKata.Tests
-{
+namespace TripServiceKata.Tests {
     public class TripServiceShould
     {
         [Fact]
