@@ -12,22 +12,30 @@ namespace TripServiceKata {
 
         public List<Trip> GetTripsByUser(IUser user) {
             List<Trip> tripList = new List<Trip>();
-            bool isFriend = false;
             ThrowsUserNotLoggedIn();
 
-            foreach (User friend in user.GetFriends()) {
-                if (friend.Equals(loggedUser)) {
-                    isFriend = true;
-                    break;
-                }
-            }
+            var isFriend = LoggerUserIsFriend(user);
 
             if (isFriend) {
                 tripList = user.FindTripsByUser();
             }
 
             return tripList;
+        }
 
+        private bool LoggerUserIsFriend(IUser user)
+        {
+            var isFriend = false;
+            foreach (User friend in user.GetFriends())
+            {
+                if (friend.Equals(loggedUser))
+                {
+                    isFriend = true;
+                    break;
+                }
+            }
+
+            return isFriend;
         }
 
         private void ThrowsUserNotLoggedIn()
