@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿using System.Collections.Generic;
+using Castle.Components.DictionaryAdapter;
+using FluentAssertions;
 using NSubstitute;
 using TripServiceKata.Entity;
 using TripServiceKata.Service;
@@ -11,10 +13,12 @@ namespace TripServiceKata.Tests
         [Fact]
         public void get_trips_by_user()
         {
-            IUser aGivenUser = new User();
+            IUser aGivenUser = NSubstitute.Substitute.For<IUser>();
+            var aGivenUserTrips = new List<Trip>(){new Trip()};
+            aGivenUser.FindTripsByUser().Returns(aGivenUserTrips);
             IUser loggedUser = new User();
             var tripService = new TripService(loggedUser);
-            aGivenUser.AddFriend(loggedUser);
+            aGivenUser.GetFriends().Returns(new EditableList<IUser>() { loggedUser });
 
             var trips = tripService.GetTripsByUser(aGivenUser);
 
