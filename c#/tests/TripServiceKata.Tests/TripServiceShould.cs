@@ -30,7 +30,7 @@ namespace TripServiceKata.Tests {
 
             var trips = tripService.GetTripsByUser(aGivenUser);
 
-            trips.Should().HaveCount(1);
+            trips.Should().HaveCount(0);
         }
 
         private static IUser AGivenUserWithFriend(IUser loggedUser)
