@@ -9,7 +9,7 @@ namespace TripServiceKata.Tests {
     public class TripServiceShould
     {
         [Fact]
-        public void get_trips_by_user()
+        public void get_trips_by_user_with_friends()
         {
             IUser loggedUser = new User();
             var tripService = new TripService(loggedUser);
