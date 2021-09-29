@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using TripServiceKata.Entity;
 using TripServiceKata.Exception;
 
@@ -25,15 +26,7 @@ namespace TripServiceKata {
 
         private bool LoggerUserIsFriend(IUser user)
         {
-            var isFriend = false;
-            foreach (User friend in user.GetFriends())
-            {
-                if (!friend.Equals(loggedUser)) continue;
-                isFriend = true;
-                break;
-            }
-
-            return isFriend;
+            return user.GetFriends().Cast<User>().Any(friend => friend.Equals(loggedUser));
         }
 
         private void ThrowsUserNotLoggedIn()
