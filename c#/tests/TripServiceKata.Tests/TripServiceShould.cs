@@ -1,5 +1,7 @@
 ﻿using FluentAssertions;
+using NSubstitute;
 using TripServiceKata.Entity;
+using TripServiceKata.Service;
 using Xunit;
 
 namespace TripServiceKata.Tests
@@ -9,8 +11,9 @@ namespace TripServiceKata.Tests
         [Fact]
         public void get_trips_by_user()
         {
-            var tripService = new TripService();
             User aGivenUser = new User();
+            var loggedUser = aGivenUser;
+            var tripService = new TripService(loggedUser);
 
             var trips = tripService.GetTripsByUser(aGivenUser);
 
